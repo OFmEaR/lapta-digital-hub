@@ -3,16 +3,20 @@ import { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
+import { Badge } from "@/components/ui/badge";
+import { ShoppingCart } from "lucide-react";
+import { useCart } from "@/contexts/CartContext";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const location = useLocation();
+  const { cartCount } = useCart();
 
   const isActive = (path: string) => location.pathname === path;
 
   const navItems = [
-    { name: "Home", path: "/" },
-    { name: "Shop", path: "/shop" },
+    { name: "Accueil", path: "/" },
+    { name: "Boutique", path: "/boutique" },
     { name: "Promotions", path: "/promotions" },
     { name: "Contact", path: "/contact" },
   ];
@@ -45,8 +49,21 @@ const Navbar = () => {
                 {item.name}
               </Link>
             ))}
+            
+            {/* Cart Button */}
+            <Link to="/panier" className="relative">
+              <Button variant="ghost" size="sm" className="relative">
+                <ShoppingCart className="h-5 w-5" />
+                {cartCount > 0 && (
+                  <Badge className="absolute -top-2 -right-2 bg-lapta-orange text-white text-xs px-1 min-w-[20px] h-5 flex items-center justify-center">
+                    {cartCount}
+                  </Badge>
+                )}
+              </Button>
+            </Link>
+
             <Button className="bg-lapta-orange hover:bg-lapta-orange/90 text-white">
-              Get Quote
+              Devis Gratuit
             </Button>
           </div>
 
@@ -75,8 +92,16 @@ const Navbar = () => {
                     {item.name}
                   </Link>
                 ))}
+                <Link 
+                  to="/panier" 
+                  onClick={() => setIsOpen(false)}
+                  className="flex items-center px-3 py-2 text-sm font-medium text-gray-700 hover:text-lapta-orange"
+                >
+                  <ShoppingCart className="h-5 w-5 mr-2" />
+                  Panier ({cartCount})
+                </Link>
                 <Button className="bg-lapta-orange hover:bg-lapta-orange/90 text-white w-full mt-4">
-                  Get Quote
+                  Devis Gratuit
                 </Button>
               </div>
             </SheetContent>

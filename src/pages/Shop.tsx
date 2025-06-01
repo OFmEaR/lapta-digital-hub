@@ -7,11 +7,14 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 import { Slider } from "@/components/ui/slider";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Link } from "react-router-dom";
+import { useCart } from "@/contexts/CartContext";
+import { toast } from "@/hooks/use-toast";
 
 const Shop = () => {
-  const [priceRange, setPriceRange] = useState([0, 5000]);
+  const [priceRange, setPriceRange] = useState([0, 500000]);
   const [selectedBrands, setSelectedBrands] = useState<string[]>([]);
   const [sortBy, setSortBy] = useState("name");
+  const { addToCart } = useCart();
 
   const brands = ["Apple", "Lenovo", "Microsoft", "Dell", "HP", "ASUS"];
   
@@ -20,12 +23,12 @@ const Shop = () => {
       id: 1,
       name: "MacBook Pro 16\"",
       brand: "Apple",
-      price: 2499,
-      originalPrice: 2799,
+      price: 249900,
+      originalPrice: 279900,
       image: "https://images.unsplash.com/photo-1517336714731-489689fd1ca8?w=500",
-      specs: ["M3 Pro Chip", "32GB RAM", "1TB SSD", "16.2\" Display"],
+      specs: ["Puce M3 Pro", "32GB RAM", "1TB SSD", "Écran 16.2\""],
       inStock: true,
-      processor: "M3 Pro",
+      processor: "Puce M3 Pro",
       ram: "32GB",
       storage: "1TB SSD"
     },
@@ -33,10 +36,10 @@ const Shop = () => {
       id: 2,
       name: "ThinkPad X1 Carbon",
       brand: "Lenovo",
-      price: 1899,
-      originalPrice: 2199,
+      price: 189900,
+      originalPrice: 219900,
       image: "https://images.unsplash.com/photo-1588872657578-7efd1f1555ed?w=500",
-      specs: ["Intel i7", "16GB RAM", "512GB SSD", "14\" Display"],
+      specs: ["Intel i7", "16GB RAM", "512GB SSD", "Écran 14\""],
       inStock: true,
       processor: "Intel i7",
       ram: "16GB",
@@ -46,10 +49,10 @@ const Shop = () => {
       id: 3,
       name: "Surface Laptop 5",
       brand: "Microsoft",
-      price: 1299,
-      originalPrice: 1599,
+      price: 129900,
+      originalPrice: 159900,
       image: "https://images.unsplash.com/photo-1593642632823-8f785ba67e45?w=500",
-      specs: ["Intel i5", "8GB RAM", "256GB SSD", "13.5\" Display"],
+      specs: ["Intel i5", "8GB RAM", "256GB SSD", "Écran 13.5\""],
       inStock: false,
       processor: "Intel i5",
       ram: "8GB",
@@ -59,10 +62,10 @@ const Shop = () => {
       id: 4,
       name: "Dell XPS 13",
       brand: "Dell",
-      price: 999,
-      originalPrice: 1199,
+      price: 99900,
+      originalPrice: 119900,
       image: "https://images.unsplash.com/photo-1496181133206-80ce9b88a853?w=500",
-      specs: ["Intel i5", "8GB RAM", "256GB SSD", "13.4\" Display"],
+      specs: ["Intel i5", "8GB RAM", "256GB SSD", "Écran 13.4\""],
       inStock: true,
       processor: "Intel i5",
       ram: "8GB",
@@ -72,10 +75,10 @@ const Shop = () => {
       id: 5,
       name: "HP Spectre x360",
       brand: "HP",
-      price: 1499,
-      originalPrice: 1699,
+      price: 149900,
+      originalPrice: 169900,
       image: "https://images.unsplash.com/photo-1484788984921-03950022c9ef?w=500",
-      specs: ["Intel i7", "16GB RAM", "512GB SSD", "13.5\" Display"],
+      specs: ["Intel i7", "16GB RAM", "512GB SSD", "Écran 13.5\""],
       inStock: true,
       processor: "Intel i7",
       ram: "16GB",
@@ -85,10 +88,10 @@ const Shop = () => {
       id: 6,
       name: "ASUS ZenBook 14",
       brand: "ASUS",
-      price: 899,
-      originalPrice: 999,
+      price: 89900,
+      originalPrice: 99900,
       image: "https://images.unsplash.com/photo-1525547719571-a2d4ac8945e2?w=500",
-      specs: ["AMD Ryzen 7", "12GB RAM", "512GB SSD", "14\" Display"],
+      specs: ["AMD Ryzen 7", "12GB RAM", "512GB SSD", "Écran 14\""],
       inStock: true,
       processor: "AMD Ryzen 7",
       ram: "12GB",
@@ -102,6 +105,14 @@ const Shop = () => {
     } else {
       setSelectedBrands(selectedBrands.filter(b => b !== brand));
     }
+  };
+
+  const handleAddToCart = (product: any) => {
+    addToCart(product);
+    toast({
+      title: "Produit ajouté au panier!",
+      description: `${product.name} a été ajouté à votre panier.`,
+    });
   };
 
   const filteredProducts = products
@@ -127,10 +138,10 @@ const Shop = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="mb-8">
           <h1 className="text-3xl md:text-4xl font-bold text-lapta-dark mb-4">
-            Shop Laptops
+            Boutique d'Ordinateurs Portables
           </h1>
           <p className="text-gray-600">
-            Find the perfect laptop for your needs with our advanced filtering options
+            Trouvez l'ordinateur portable parfait pour vos besoins avec nos options de filtrage avancées
           </p>
         </div>
 
@@ -138,26 +149,26 @@ const Shop = () => {
           {/* Filters Sidebar */}
           <div className="lg:col-span-1">
             <div className="bg-white p-6 rounded-lg shadow-md sticky top-24">
-              <h3 className="text-lg font-semibold mb-4">Filters</h3>
+              <h3 className="text-lg font-semibold mb-4">Filtres</h3>
               
               {/* Price Range */}
               <div className="mb-6">
                 <label className="block text-sm font-medium mb-2">
-                  Price Range: ${priceRange[0]} - ${priceRange[1]}
+                  Gamme de prix: {priceRange[0].toLocaleString()} - {priceRange[1].toLocaleString()} DZD
                 </label>
                 <Slider
                   value={priceRange}
                   onValueChange={setPriceRange}
-                  max={5000}
+                  max={500000}
                   min={0}
-                  step={100}
+                  step={10000}
                   className="mb-2"
                 />
               </div>
 
               {/* Brand Filter */}
               <div className="mb-6">
-                <label className="block text-sm font-medium mb-2">Brand</label>
+                <label className="block text-sm font-medium mb-2">Marque</label>
                 <div className="space-y-2">
                   {brands.map(brand => (
                     <div key={brand} className="flex items-center space-x-2">
@@ -176,15 +187,15 @@ const Shop = () => {
 
               {/* Sort */}
               <div>
-                <label className="block text-sm font-medium mb-2">Sort By</label>
+                <label className="block text-sm font-medium mb-2">Trier par</label>
                 <Select value={sortBy} onValueChange={setSortBy}>
                   <SelectTrigger>
                     <SelectValue />
                   </SelectTrigger>
                   <SelectContent>
-                    <SelectItem value="name">Name A-Z</SelectItem>
-                    <SelectItem value="price-low">Price: Low to High</SelectItem>
-                    <SelectItem value="price-high">Price: High to Low</SelectItem>
+                    <SelectItem value="name">Nom A-Z</SelectItem>
+                    <SelectItem value="price-low">Prix: Croissant</SelectItem>
+                    <SelectItem value="price-high">Prix: Décroissant</SelectItem>
                   </SelectContent>
                 </Select>
               </div>
@@ -195,7 +206,7 @@ const Shop = () => {
           <div className="lg:col-span-3">
             <div className="mb-4 flex justify-between items-center">
               <p className="text-gray-600">
-                Showing {filteredProducts.length} of {products.length} products
+                Affichage de {filteredProducts.length} sur {products.length} produits
               </p>
             </div>
 
@@ -211,12 +222,12 @@ const Shop = () => {
                       />
                       {!product.inStock && (
                         <Badge variant="destructive" className="absolute top-2 right-2">
-                          Out of Stock
+                          Rupture de stock
                         </Badge>
                       )}
                       {product.originalPrice !== product.price && (
                         <Badge className="absolute top-2 left-2 bg-lapta-red">
-                          Sale
+                          Promo
                         </Badge>
                       )}
                     </div>
@@ -225,9 +236,9 @@ const Shop = () => {
                     <div className="flex items-center justify-between mb-2">
                       <Badge variant="secondary">{product.brand}</Badge>
                       <div className="text-right">
-                        <span className="text-xl font-bold text-lapta-orange">${product.price}</span>
+                        <span className="text-xl font-bold text-lapta-orange">{product.price.toLocaleString()} DZD</span>
                         {product.originalPrice !== product.price && (
-                          <span className="text-sm text-gray-500 line-through ml-2">${product.originalPrice}</span>
+                          <span className="text-sm text-gray-500 line-through ml-2">{product.originalPrice.toLocaleString()} DZD</span>
                         )}
                       </div>
                     </div>
@@ -238,13 +249,15 @@ const Shop = () => {
                       <p>• {product.storage}</p>
                     </div>
                     <div className="flex gap-2">
-                      <Button asChild className="flex-1 bg-lapta-orange hover:bg-lapta-orange/90" disabled={!product.inStock}>
-                        <Link to={`/product/${product.id}`}>
-                          {product.inStock ? "View Details" : "Notify Me"}
-                        </Link>
+                      <Button 
+                        onClick={() => handleAddToCart(product)}
+                        className="flex-1 bg-lapta-orange hover:bg-lapta-orange/90" 
+                        disabled={!product.inStock}
+                      >
+                        {product.inStock ? "Ajouter au panier" : "Rupture"}
                       </Button>
                       <Button asChild variant="outline" className="border-lapta-orange text-lapta-orange hover:bg-lapta-orange hover:text-white">
-                        <Link to="/contact">Contact</Link>
+                        <Link to={`/produit/${product.id}`}>Détails</Link>
                       </Button>
                     </div>
                   </CardContent>
@@ -254,15 +267,15 @@ const Shop = () => {
 
             {filteredProducts.length === 0 && (
               <div className="text-center py-12">
-                <p className="text-gray-500 text-lg">No products found matching your criteria.</p>
+                <p className="text-gray-500 text-lg">Aucun produit trouvé correspondant à vos critères.</p>
                 <Button 
                   onClick={() => {
-                    setPriceRange([0, 5000]);
+                    setPriceRange([0, 500000]);
                     setSelectedBrands([]);
                   }}
                   className="mt-4 bg-lapta-orange hover:bg-lapta-orange/90"
                 >
-                  Clear Filters
+                  Effacer les filtres
                 </Button>
               </div>
             )}
