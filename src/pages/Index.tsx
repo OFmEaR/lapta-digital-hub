@@ -10,30 +10,30 @@ const Index = () => {
       id: 1,
       name: "MacBook Pro 16\"",
       brand: "Apple",
-      price: "$2,499",
-      originalPrice: "$2,799",
+      price: "450 000",
+      originalPrice: "500 000",
       image: "https://images.unsplash.com/photo-1517336714731-489689fd1ca8?w=500",
-      specs: ["M3 Pro Chip", "32GB RAM", "1TB SSD", "16.2\" Display"],
+      specs: ["Puce M3 Pro", "32 Go RAM", "1 To SSD", "Écran 16.2\""],
       inStock: true
     },
     {
       id: 2,
       name: "ThinkPad X1 Carbon",
       brand: "Lenovo",
-      price: "$1,899",
-      originalPrice: "$2,199",
+      price: "320 000",
+      originalPrice: "380 000",
       image: "https://images.unsplash.com/photo-1588872657578-7efd1f1555ed?w=500",
-      specs: ["Intel i7", "16GB RAM", "512GB SSD", "14\" Display"],
+      specs: ["Intel i7", "16 Go RAM", "512 Go SSD", "Écran 14\""],
       inStock: true
     },
     {
       id: 3,
       name: "Surface Laptop 5",
       brand: "Microsoft",
-      price: "$1,299",
-      originalPrice: "$1,599",
+      price: "250 000",
+      originalPrice: "290 000",
       image: "https://images.unsplash.com/photo-1593642632823-8f785ba67e45?w=500",
-      specs: ["Intel i5", "8GB RAM", "256GB SSD", "13.5\" Display"],
+      specs: ["Intel i5", "8 Go RAM", "256 Go SSD", "Écran 13.5\""],
       inStock: false
     }
   ];
@@ -41,53 +41,54 @@ const Index = () => {
   const trustFeatures = [
     {
       icon: "🚀",
-      title: "Fast Delivery",
-      description: "Quick and secure delivery to your doorstep"
+      title: "Livraison Rapide",
+      description: "Livraison rapide et sécurisée à votre porte"
     },
     {
       icon: "🔧",
-      title: "Expert Support",
-      description: "Professional technical support and consultation"
+      title: "Support Expert",
+      description: "Support technique professionnel et consultation"
     },
     {
       icon: "🛡️",
-      title: "Warranty",
-      description: "Comprehensive warranty on all products"
+      title: "Garantie",
+      description: "Garantie complète sur tous les produits"
     },
     {
       icon: "💰",
-      title: "Best Prices",
-      description: "Competitive pricing and flexible payment options"
+      title: "Meilleurs Prix",
+      description: "Prix compétitifs et options de paiement flexibles"
     }
   ];
 
   return (
     <div className="min-h-screen">
       {/* Hero Section */}
-      <section className="bg-gradient-to-br from-lapta-gray to-white py-20">
+      <section className="bg-gradient-to-br from-rocdz-gray to-white py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div className="animate-fade-in">
-              <h1 className="text-4xl md:text-6xl font-bold text-lapta-dark mb-6">
-                Premium Laptops for 
-                <span className="text-lapta-orange"> Every Need</span>
+              <h1 className="text-4xl md:text-6xl font-bold text-rocdz-dark mb-6">
+                <span className="text-rocdz-blue">Republicofcomputerdz</span>
+                <br />
+                Ordinateurs Portables Premium
               </h1>
               <p className="text-xl text-gray-600 mb-8">
-                Discover the latest laptops from top brands with professional consultation and competitive prices. Your perfect computing solution awaits.
+                Découvrez les derniers ordinateurs portables des meilleures marques avec consultation professionnelle et prix compétitifs. Votre solution informatique parfaite vous attend.
               </p>
               <div className="flex flex-col sm:flex-row gap-4">
-                <Button asChild size="lg" className="bg-lapta-orange hover:bg-lapta-orange/90 text-white">
-                  <Link to="/shop">Shop Now</Link>
+                <Button asChild size="lg" className="bg-rocdz-blue hover:bg-rocdz-blue-dark text-white">
+                  <Link to="/boutique">Acheter Maintenant</Link>
                 </Button>
-                <Button asChild variant="outline" size="lg" className="border-lapta-orange text-lapta-orange hover:bg-lapta-orange hover:text-white">
-                  <Link to="/contact">Get Consultation</Link>
+                <Button asChild variant="outline" size="lg" className="border-rocdz-blue text-rocdz-blue hover:bg-rocdz-blue hover:text-white">
+                  <Link to="/contact">Obtenir une Consultation</Link>
                 </Button>
               </div>
             </div>
             <div className="relative animate-fade-in">
               <img 
-                src="/lovable-uploads/1a8dd20f-0b34-4d3b-9dd7-d37993f51dcd.png"
-                alt="LAPTA Laptops"
+                src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=600"
+                alt="Ordinateurs Portables ROCDZ"
                 className="w-full h-auto rounded-lg shadow-2xl"
               />
             </div>
@@ -99,11 +100,11 @@ const Index = () => {
       <section className="py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold text-lapta-dark mb-4">
-              Featured Products
+            <h2 className="text-3xl md:text-4xl font-bold text-rocdz-dark mb-4">
+              Produits Vedettes
             </h2>
             <p className="text-xl text-gray-600">
-              Handpicked laptops with the best value and performance
+              Ordinateurs portables sélectionnés avec le meilleur rapport qualité-prix
             </p>
           </div>
 
@@ -119,12 +120,12 @@ const Index = () => {
                     />
                     {!product.inStock && (
                       <Badge variant="destructive" className="absolute top-2 right-2">
-                        Out of Stock
+                        Rupture de Stock
                       </Badge>
                     )}
                     {product.originalPrice !== product.price && (
-                      <Badge className="absolute top-2 left-2 bg-lapta-red">
-                        Sale
+                      <Badge className="absolute top-2 left-2 bg-rocdz-red">
+                        Promotion
                       </Badge>
                     )}
                   </div>
@@ -133,9 +134,9 @@ const Index = () => {
                   <div className="flex items-center justify-between mb-2">
                     <Badge variant="secondary">{product.brand}</Badge>
                     <div className="text-right">
-                      <span className="text-2xl font-bold text-lapta-orange">{product.price}</span>
+                      <span className="text-2xl font-bold text-rocdz-blue">{product.price} DZD</span>
                       {product.originalPrice !== product.price && (
-                        <span className="text-sm text-gray-500 line-through ml-2">{product.originalPrice}</span>
+                        <span className="text-sm text-gray-500 line-through ml-2">{product.originalPrice} DZD</span>
                       )}
                     </div>
                   </div>
@@ -148,12 +149,12 @@ const Index = () => {
                     </ul>
                   </CardDescription>
                   <div className="flex gap-2">
-                    <Button asChild className="flex-1 bg-lapta-orange hover:bg-lapta-orange/90" disabled={!product.inStock}>
-                      <Link to={`/product/${product.id}`}>
-                        {product.inStock ? "View Details" : "Notify Me"}
+                    <Button asChild className="flex-1 bg-rocdz-blue hover:bg-rocdz-blue-dark" disabled={!product.inStock}>
+                      <Link to={`/produit/${product.id}`}>
+                        {product.inStock ? "Voir Détails" : "Me Notifier"}
                       </Link>
                     </Button>
-                    <Button asChild variant="outline" className="border-lapta-orange text-lapta-orange hover:bg-lapta-orange hover:text-white">
+                    <Button asChild variant="outline" className="border-rocdz-blue text-rocdz-blue hover:bg-rocdz-blue hover:text-white">
                       <Link to="/contact">Contact</Link>
                     </Button>
                   </div>
@@ -163,22 +164,22 @@ const Index = () => {
           </div>
 
           <div className="text-center mt-12">
-            <Button asChild size="lg" variant="outline" className="border-lapta-orange text-lapta-orange hover:bg-lapta-orange hover:text-white">
-              <Link to="/shop">View All Products</Link>
+            <Button asChild size="lg" variant="outline" className="border-rocdz-blue text-rocdz-blue hover:bg-rocdz-blue hover:text-white">
+              <Link to="/boutique">Voir Tous les Produits</Link>
             </Button>
           </div>
         </div>
       </section>
 
       {/* Trust Section */}
-      <section className="py-20 bg-lapta-gray">
+      <section className="py-20 bg-rocdz-gray">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold text-lapta-dark mb-4">
-              Why Choose LAPTA?
+            <h2 className="text-3xl md:text-4xl font-bold text-rocdz-dark mb-4">
+              Pourquoi Choisir ROCDZ ?
             </h2>
             <p className="text-xl text-gray-600">
-              Your trusted partner for premium computing solutions
+              Votre partenaire de confiance pour des solutions informatiques premium
             </p>
           </div>
 
@@ -188,7 +189,7 @@ const Index = () => {
                 <div className="text-6xl mb-4 group-hover:scale-110 transition-transform duration-300">
                   {feature.icon}
                 </div>
-                <h3 className="text-xl font-semibold text-lapta-dark mb-2">
+                <h3 className="text-xl font-semibold text-rocdz-dark mb-2">
                   {feature.title}
                 </h3>
                 <p className="text-gray-600">
@@ -201,20 +202,20 @@ const Index = () => {
       </section>
 
       {/* CTA Section */}
-      <section className="py-20 bg-lapta-dark text-white">
+      <section className="py-20 bg-rocdz-dark text-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="text-3xl md:text-4xl font-bold mb-4">
-            Ready to Find Your Perfect Laptop?
+            Prêt à Trouver Votre Ordinateur Portable Parfait ?
           </h2>
           <p className="text-xl text-gray-300 mb-8">
-            Get expert consultation and find the best laptop for your needs and budget
+            Obtenez une consultation d'expert et trouvez le meilleur ordinateur portable pour vos besoins et votre budget
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button asChild size="lg" className="bg-lapta-orange hover:bg-lapta-orange/90">
-              <Link to="/contact">Contact Us Now</Link>
+            <Button asChild size="lg" className="bg-rocdz-blue hover:bg-rocdz-blue-dark">
+              <Link to="/contact">Contactez-nous Maintenant</Link>
             </Button>
-            <Button asChild size="lg" variant="outline" className="border-white text-white hover:bg-white hover:text-lapta-dark">
-              <Link to="/promotions">View Promotions</Link>
+            <Button asChild size="lg" variant="outline" className="border-white text-white hover:bg-white hover:text-rocdz-dark">
+              <Link to="/promotions">Voir les Promotions</Link>
             </Button>
           </div>
         </div>

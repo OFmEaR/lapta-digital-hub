@@ -63,11 +63,12 @@ export default {
 					border: 'hsl(var(--sidebar-border))',
 					ring: 'hsl(var(--sidebar-ring))'
 				},
-				// LAPTA brand colors
-				lapta: {
-					orange: '#ff6b35',
+				// ROCDZ brand colors
+				rocdz: {
+					blue: '#1e40af',
+					'blue-dark': '#1e3a8a',
+					'blue-light': '#3b82f6',
 					red: '#dc2626',
-					blue: '#3b82f6',
 					dark: '#1a1a1a',
 					gray: '#f5f5f5'
 				}

@@ -27,11 +27,7 @@ const Navbar = () => {
         <div className="flex justify-between items-center h-16">
           {/* Logo */}
           <Link to="/" className="flex items-center">
-            <img 
-              src="/lovable-uploads/f9ae0785-a0fe-4fea-b215-6aaa3791c262.png" 
-              alt="LAPTA" 
-              className="h-8 w-auto"
-            />
+            <span className="text-2xl font-bold text-rocdz-blue">ROCDZ</span>
           </Link>
 
           {/* Desktop Navigation */}
@@ -42,8 +38,8 @@ const Navbar = () => {
                 to={item.path}
                 className={`px-3 py-2 text-sm font-medium transition-colors duration-200 ${
                   isActive(item.path)
-                    ? "text-lapta-orange border-b-2 border-lapta-orange"
-                    : "text-gray-700 hover:text-lapta-orange"
+                    ? "text-rocdz-blue border-b-2 border-rocdz-blue"
+                    : "text-gray-700 hover:text-rocdz-blue"
                 }`}
               >
                 {item.name}
@@ -55,14 +51,14 @@ const Navbar = () => {
               <Button variant="ghost" size="sm" className="relative">
                 <ShoppingCart className="h-5 w-5" />
                 {cartCount > 0 && (
-                  <Badge className="absolute -top-2 -right-2 bg-lapta-orange text-white text-xs px-1 min-w-[20px] h-5 flex items-center justify-center">
+                  <Badge className="absolute -top-2 -right-2 bg-rocdz-blue text-white text-xs px-1 min-w-[20px] h-5 flex items-center justify-center">
                     {cartCount}
                   </Badge>
                 )}
               </Button>
             </Link>
 
-            <Button className="bg-lapta-orange hover:bg-lapta-orange/90 text-white">
+            <Button className="bg-rocdz-blue hover:bg-rocdz-blue-dark text-white">
               Devis Gratuit
             </Button>
           </div>
@@ -85,8 +81,8 @@ const Navbar = () => {
                     onClick={() => setIsOpen(false)}
                     className={`px-3 py-2 text-sm font-medium transition-colors duration-200 ${
                       isActive(item.path)
-                        ? "text-lapta-orange"
-                        : "text-gray-700 hover:text-lapta-orange"
+                        ? "text-rocdz-blue"
+                        : "text-gray-700 hover:text-rocdz-blue"
                     }`}
                   >
                     {item.name}
@@ -95,12 +91,12 @@ const Navbar = () => {
                 <Link 
                   to="/panier" 
                   onClick={() => setIsOpen(false)}
-                  className="flex items-center px-3 py-2 text-sm font-medium text-gray-700 hover:text-lapta-orange"
+                  className="flex items-center px-3 py-2 text-sm font-medium text-gray-700 hover:text-rocdz-blue"
                 >
                   <ShoppingCart className="h-5 w-5 mr-2" />
                   Panier ({cartCount})
                 </Link>
-                <Button className="bg-lapta-orange hover:bg-lapta-orange/90 text-white w-full mt-4">
+                <Button className="bg-rocdz-blue hover:bg-rocdz-blue-dark text-white w-full mt-4">
                   Devis Gratuit
                 </Button>
               </div>
